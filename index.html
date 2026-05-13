@@ -5,81 +5,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 <meta name="apple-mobile-web-app-capable" content="yes"/>
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-<meta name="theme-color" content="#0f0f13"/>
-<title>Rashmi — Fitness Tracker</title>
+<meta name="theme-color" content="#08080f"/>
+<title>Rashmi · Fit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
 <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
 
+<div class="bg-orbs">
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+</div>
+
 <div id="app">
 
-  <!-- HEADER -->
+  <div class="splash" id="splash">
+    <div class="splash-inner">
+      <div class="splash-logo">R</div>
+      <h1 class="splash-title">Rashmi<span class="accent-dot">·</span>Fit</h1>
+      <p class="splash-sub">Your personal strength journey</p>
+    </div>
+  </div>
+
   <header class="header">
     <div class="header-left">
-      <div class="avatar">R</div>
+      <div class="avatar-ring"><div class="avatar">R</div></div>
       <div>
-        <p class="header-name">Rashmi's Tracker</p>
+        <p class="header-name">Rashmi<span class="accent-dot">·</span>Fit</p>
         <p class="header-date" id="header-date"></p>
       </div>
     </div>
-    <div class="streak-pill" id="streak-pill">
-      <i class="ti ti-flame"></i><span id="streak-num">0</span>
+    <div class="streak-badge" id="streak-badge">
+      <i class="ti ti-flame"></i>
+      <span id="streak-num">0</span>
+      <span class="streak-label">day streak</span>
     </div>
   </header>
 
-  <!-- NOTIF -->
+  <div class="hero" id="hero">
+    <div class="hero-top">
+      <span class="hero-day-tag" id="hero-day-tag">TODAY</span>
+      <div class="hero-focus" id="hero-focus">Rest Day</div>
+      <div class="hero-tip" id="hero-tip"></div>
+    </div>
+    <div class="hero-rings">
+      <div class="rings-wrap">
+        <svg viewBox="0 0 140 140" class="ring-svg">
+          <circle class="rg rg-bg" cx="70" cy="70" r="58"/>
+          <circle class="rg rg-steps" cx="70" cy="70" r="58" id="rs"/>
+          <circle class="rg rg-bg" cx="70" cy="70" r="46"/>
+          <circle class="rg rg-water" cx="70" cy="70" r="46" id="rw"/>
+          <circle class="rg rg-bg" cx="70" cy="70" r="34"/>
+          <circle class="rg rg-ex" cx="70" cy="70" r="34" id="re"/>
+        </svg>
+        <div class="ring-center">
+          <div class="ring-pct" id="ring-pct">0%</div>
+          <div class="ring-sub">complete</div>
+        </div>
+      </div>
+      <div class="ring-legend">
+        <div class="rl-item"><span class="rl-dot steps-dot"></span><span>Steps</span></div>
+        <div class="rl-item"><span class="rl-dot water-dot"></span><span>Water</span></div>
+        <div class="rl-item"><span class="rl-dot ex-dot"></span><span>Workout</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-card water-card">
+      <div class="stat-icon"><i class="ti ti-droplet-filled"></i></div>
+      <div class="stat-val" id="sv-water">0.0L</div>
+      <div class="stat-label">of 2.5L</div>
+      <div class="stat-bar"><div class="stat-fill sf-water" id="sb-water"></div></div>
+    </div>
+    <div class="stat-card steps-card">
+      <div class="stat-icon"><i class="ti ti-shoe"></i></div>
+      <div class="stat-val" id="sv-steps">0</div>
+      <div class="stat-label">of 10k steps</div>
+      <div class="stat-bar"><div class="stat-fill sf-steps" id="sb-steps"></div></div>
+    </div>
+    <div class="stat-card ex-card">
+      <div class="stat-icon"><i class="ti ti-barbell"></i></div>
+      <div class="stat-val"><span id="sv-done">0</span><span class="stat-of" id="sv-of">/0</span></div>
+      <div class="stat-label">exercises</div>
+      <div class="stat-bar"><div class="stat-fill sf-ex" id="sb-ex"></div></div>
+    </div>
+  </div>
+
+  <div class="day-scroll"><div class="day-tabs" id="day-tabs"></div></div>
+
+  <div class="complete-banner" id="complete-banner">
+    <div class="cb-glow"></div>
+    <span class="cb-trophy">🏆</span>
+    <div class="cb-text">
+      <div class="cb-title">Workout Complete!</div>
+      <div class="cb-sub">You crushed it today, Rashmi! 🔥</div>
+    </div>
+  </div>
+
   <div class="notif" id="notif">
     <i class="ti ti-bell-ringing"></i>
     <span id="notif-txt"></span>
-    <button onclick="hideNotif()" aria-label="dismiss">×</button>
+    <button onclick="hideNotif()">×</button>
   </div>
 
-  <!-- METRICS ROW -->
-  <div class="metrics">
-    <div class="metric-card" id="mc-steps">
-      <div class="metric-icon steps-icon"><i class="ti ti-shoe"></i></div>
-      <div class="metric-body">
-        <div class="metric-val" id="m-steps">0</div>
-        <div class="metric-label">Steps · 10k goal</div>
-        <div class="metric-bar"><div class="metric-fill steps-fill" id="b-steps"></div></div>
-      </div>
-    </div>
-    <div class="metric-card" id="mc-water">
-      <div class="metric-icon water-icon"><i class="ti ti-droplet"></i></div>
-      <div class="metric-body">
-        <div class="metric-val" id="m-water">0.0L</div>
-        <div class="metric-label">Water · 2.5L goal</div>
-        <div class="metric-bar"><div class="metric-fill water-fill" id="b-water"></div></div>
-      </div>
-    </div>
-    <div class="metric-card" id="mc-ex">
-      <div class="metric-icon ex-icon"><i class="ti ti-check"></i></div>
-      <div class="metric-body">
-        <div class="metric-val" id="m-done">0<span class="metric-of" id="m-of">/0</span></div>
-        <div class="metric-label">Exercises done</div>
-        <div class="metric-bar"><div class="metric-fill ex-fill" id="b-ex"></div></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- DAY TABS -->
-  <div class="day-scroll">
-    <div class="day-tabs" id="day-tabs"></div>
-  </div>
-
-  <!-- COMPLETE BANNER -->
-  <div class="complete-banner" id="complete-banner">
-    <i class="ti ti-trophy"></i> Workout complete! You crushed it today! 🔥
-  </div>
-
-  <!-- MAIN CONTENT -->
   <div id="main"></div>
 
 </div>
-
 <script src="app.js"></script>
 </body>
 </html>
