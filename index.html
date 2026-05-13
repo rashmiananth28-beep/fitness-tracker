@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="theme-color" content="#0f0f13"/>
+<title>Rashmi — Fitness Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-left">
+      <div class="avatar">R</div>
+      <div>
+        <p class="header-name">Rashmi's Tracker</p>
+        <p class="header-date" id="header-date"></p>
+      </div>
+    </div>
+    <div class="streak-pill" id="streak-pill">
+      <i class="ti ti-flame"></i><span id="streak-num">0</span>
+    </div>
+  </header>
+
+  <!-- NOTIF -->
+  <div class="notif" id="notif">
+    <i class="ti ti-bell-ringing"></i>
+    <span id="notif-txt"></span>
+    <button onclick="hideNotif()" aria-label="dismiss">×</button>
+  </div>
+
+  <!-- METRICS ROW -->
+  <div class="metrics">
+    <div class="metric-card" id="mc-steps">
+      <div class="metric-icon steps-icon"><i class="ti ti-shoe"></i></div>
+      <div class="metric-body">
+        <div class="metric-val" id="m-steps">0</div>
+        <div class="metric-label">Steps · 10k goal</div>
+        <div class="metric-bar"><div class="metric-fill steps-fill" id="b-steps"></div></div>
+      </div>
+    </div>
+    <div class="metric-card" id="mc-water">
+      <div class="metric-icon water-icon"><i class="ti ti-droplet"></i></div>
+      <div class="metric-body">
+        <div class="metric-val" id="m-water">0.0L</div>
+        <div class="metric-label">Water · 2.5L goal</div>
+        <div class="metric-bar"><div class="metric-fill water-fill" id="b-water"></div></div>
+      </div>
+    </div>
+    <div class="metric-card" id="mc-ex">
+      <div class="metric-icon ex-icon"><i class="ti ti-check"></i></div>
+      <div class="metric-body">
+        <div class="metric-val" id="m-done">0<span class="metric-of" id="m-of">/0</span></div>
+        <div class="metric-label">Exercises done</div>
+        <div class="metric-bar"><div class="metric-fill ex-fill" id="b-ex"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DAY TABS -->
+  <div class="day-scroll">
+    <div class="day-tabs" id="day-tabs"></div>
+  </div>
+
+  <!-- COMPLETE BANNER -->
+  <div class="complete-banner" id="complete-banner">
+    <i class="ti ti-trophy"></i> Workout complete! You crushed it today! 🔥
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div id="main"></div>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
